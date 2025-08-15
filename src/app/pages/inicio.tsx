@@ -1,3 +1,4 @@
+import Card from "../components/card/card";
 import Perfil from "../components/perfil/perfil";
 import Pesquisa from "../components/pesquisa/pesquisa";
 
@@ -12,6 +13,9 @@ export default function Inicio() {
                 </div>
                 <div className="mt-20">
                     <Pesquisa />
+                </div>
+                <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <Card />
                 </div>
             </div>
         </div>
