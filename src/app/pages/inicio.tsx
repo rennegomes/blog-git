@@ -1,8 +1,13 @@
+import Link from "next/link";
+import { listIssues } from "../../../lib/github";
 import Card from "../components/card/card";
 import Perfil from "../components/perfil/perfil";
 import Pesquisa from "../components/pesquisa/pesquisa";
 
-export default function Inicio() {
+export default async function Inicio() {
+
+    const issues = await listIssues();
+
     return (
         <div className="mb-24">
             <div className="flex items-end bg-[var(--base-profile)] w-full h-48"></div>
@@ -17,7 +22,11 @@ export default function Inicio() {
                     <Pesquisa />
                 </div>
                 <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-                    <Card />
+                {issues.map(post => (
+                    <Link key={post.number} href={`/posts/${post.number}`}>
+                        <Card key={post.number} body={post.body} time={new Date(post.created_at).toLocaleDateString('pt-BR')} title={post.title} />
+                    </Link>
+                ))}
                 </div>
             </div>
         </div>
