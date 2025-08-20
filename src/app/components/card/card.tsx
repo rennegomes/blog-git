@@ -1,7 +1,7 @@
 export default function Card() {
     return(
         <>
-        <div className="p-8 bg-[var(--base-post)] rounded-xl">
+        <div className="p-7 bg-[var(--base-post)] rounded-xl border-2 border-transparent hover:border-[var(--base-label)]">
             <div className="grid gap-4 md:grid-cols-[280_1fr]">
                 <h1 className="text-xl text-[var(--base-title)]">JavaScript data types and data structures</h1>
                 <p className="text-[var(--base-span)] text-sm md:mt-1">Há 1 dia</p>

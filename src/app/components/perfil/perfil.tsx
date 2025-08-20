@@ -13,7 +13,7 @@ export default function Perfil() {
                 <div className="flex justify-center md:justify-between">
                     <h1 className="text-[var(--base-title)] text-2xl font-bold">Cameron Williamson</h1>
                     <div className="items-center hidden md:flex">
-                        <div className="gap-2 items-center text-xs text-[var(--blue)] border-b-2 border-transparent hover:border-b-2 hover:border-[var(--blue)] cursor-pointer md:flex" >
+                        <div className="gap-2 items-center text-xs text-[var(--blue)] border-b-2 border-transparent hover:border-[var(--blue)] cursor-pointer md:flex" >
                             <p>GITHUB</p>
                             <ShareFat size={12} weight="fill" />
                         </div>
