@@ -1,12 +1,15 @@
-import { getIssue } from "../../../../lib/github";
+import { getIssue, getUser, GitHubUser } from "../../../../lib/github";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from "remark-gfm";
 import { CalendarDots, CaretLeft, GithubLogo, ShareFat, Users } from "@phosphor-icons/react/dist/ssr";
 
-type Props = { params: { number: string } };
+type PropsPost = {
+    params: { number: string }
+};
 
-export default async function Post({ params }: Props) {
+export default async function Post({ params }: PropsPost) {
     const post = await getIssue(params.number);
+    const user: GitHubUser = await getUser(post.user.login);
 
     return (
         <div className="mb-24">
@@ -23,10 +26,14 @@ export default async function Post({ params }: Props) {
                             <p>voltar</p>
                         </button>
                         <div className="items-center hidden md:flex">
-                            <div className="gap-2 items-center text-xs text-[var(--blue)] border-b-2 border-transparent hover:border-[var(--blue)] cursor-pointer md:flex" >
-                                <a href={`https://github.com/`+ post.user.login}>GITHUB</a>
+                            <a 
+                                href={post.html_url}
+                                target="_blank" 
+                                className="gap-2 items-center text-xs text-[var(--blue)] border-b-2 border-transparent hover:border-[var(--blue)] cursor-pointer md:flex" 
+                            >
+                                <p>VER NO GITHUB</p>
                                 <ShareFat size={12} weight="fill" />
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div className="mt-5">
@@ -44,7 +51,7 @@ export default async function Post({ params }: Props) {
                         </div>
                         <div className="flex gap-2">
                             <Users className="text-[var(--base-label)] block" size={18} weight="fill" />
-                            <p>32 seguidores</p>
+                            <p>{user.followers} seguidores</p>
                         </div>
                     </div>
 

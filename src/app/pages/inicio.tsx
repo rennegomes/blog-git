@@ -7,7 +7,7 @@ import Pesquisa from "../components/pesquisa/pesquisa";
 export default async function Inicio() {
 
     const issues = await listIssues();
-    const num = 1
+    const num = "rennegomes"
 
     return (
         <div className="mb-24">

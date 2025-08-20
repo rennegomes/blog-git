@@ -10,8 +10,9 @@ export type Issue = {
   created_at: string;
   updated_at: string;
   labels: { name: string }[];
-  user: { login: string; avatar_url: string };
+  user: { login: string; avatar_url: string; url: string };
   pull_request?: unknown;
+  html_url: string;
 };
 
 function headers() {
@@ -40,5 +41,28 @@ export async function getIssue(number: string | number): Promise<Issue> {
     next: { revalidate: 60 },
   });
   if (!res.ok) throw new Error(`Post ${number} não encontrado`);
+  return res.json();
+}
+
+
+export type GitHubUser = {
+  login: string;
+  name: string;
+  avatar_url: string;
+  bio: string;
+  followers: number;
+  following: number;
+  html_url: string;
+};
+
+export async function getUser(username: string): Promise<GitHubUser> {
+  const res = await fetch(`https://api.github.com/users/${username}`, {
+    headers: {
+      Accept: 'application/vnd.github+json',
+      ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {})
+    },
+    next: { revalidate: 60 },
+  });
+  if (!res.ok) throw new Error('Usuário não encontrado');
   return res.json();
 }
