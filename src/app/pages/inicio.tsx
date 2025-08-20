@@ -7,6 +7,7 @@ import Pesquisa from "../components/pesquisa/pesquisa";
 export default async function Inicio() {
 
     const issues = await listIssues();
+    const num = 1
 
     return (
         <div className="mb-24">
@@ -16,7 +17,7 @@ export default async function Inicio() {
 
             <div className="w-3/4 m-auto max-w-[860px] relative z-20">
                 <div className="bg-[var(--base-profile)] rounded-xl shadow-2xl/50 mt-[-80px] p-8">
-                    <Perfil />
+                    <Perfil params={num} />
                 </div>
                 <div className="mt-20">
                     <Pesquisa />
