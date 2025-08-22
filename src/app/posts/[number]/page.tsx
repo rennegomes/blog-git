@@ -1,7 +1,8 @@
 import { getIssue, getUser, GitHubUser } from "../../../../lib/github";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from "remark-gfm";
-import { CalendarDots, CaretLeft, GithubLogo, ShareFat, Users } from "@phosphor-icons/react/dist/ssr";
+import { CalendarDots, GithubLogo, ShareFat, Users } from "@phosphor-icons/react/dist/ssr";
+import ButtonBack from "@/app/components/buttonBack/buttonBack";
 
 type PropsPost = {
     params: { number: string }
@@ -21,10 +22,7 @@ export default async function Post({ params }: PropsPost) {
                 <div className="bg-[var(--base-profile)] rounded-xl shadow-2xl/50 mt-[-80px] p-8">
 
                     <div className="flex justify-center md:justify-between">
-                        <button className="flex items-center gap-2 text-[var(--blue)] cursor-pointer">
-                            <CaretLeft size={12} weight="fill" />
-                            <p>voltar</p>
-                        </button>
+                        <ButtonBack />
                         <div className="items-center hidden md:flex">
                             <a 
                                 href={post.html_url}
