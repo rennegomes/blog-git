@@ -20,14 +20,7 @@ export default async function Inicio() {
                     <Perfil params={num} />
                 </div>
                 <div className="mt-20">
-                    <Pesquisa />
-                </div>
-                <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-                {issues.map(post => (
-                    <Link key={post.number} href={`/posts/${post.number}`}>
-                        <Card key={post.number} body={post.body} time={new Date(post.created_at).toLocaleDateString('pt-BR')} title={post.title} />
-                    </Link>
-                ))}
+                    <Pesquisa issues={issues} />
                 </div>
             </div>
         </div>
